@@ -2,7 +2,7 @@ pipeline {
     agent {
         Docker {
             image 'node:6-alpine'
-            args '-p 3000:3000'
+            args '--privileged -v $HOME/.m2:/home/jenkins/.m2 -ti -u 496 -e MAVEN_CONFIG=/home/jenkins/.m2 -e MAVEN_OPTS=-Xmx2048m -p 3000:3000'
         }
     }
     stages {
